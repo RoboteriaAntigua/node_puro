@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+</title>
+</head>
+<body>
+<h3>Node es la parte servidor de Javascript </h3>
+<p> Node permite crear, modificar, borrar archivos del server!, asi no nesesitamos a PHP <br>
+    Node y NPM son el famoso entorno dev</p>
+
+<h3>Instalar node </h3>
+<p> Basicamente descargamos la ultima version de la pagina: https://nodejs.org <br>
+abrimos nuestro gestor de carpetas (caja en ubuntu) como root desde la terminal:
+sudo caja <br>
+luego copiamos, combinamos y reemplazamos el contenido de lo descargado en /usr/ <br>
+fin de la instalacion! </p>
+
+
+<h3>Inicializamos node </h3>
+<p> creamos un archivo: myfirst.js<br>
+luego lo corremos: <br>
+node myfirst.js <br>
+y listo, tenemos nuestro propio servidor! podemos verlo localmente con:
+localhost:8080 o desde cualquier lugar del mundo con: <br>
+ip:8080 </p>
+
+<!-- El contenido del archivo myfirrst.js es:
+var http = require('http');
+
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.end('Hello World!');
+}).listen(8080); 
+
+-->
+
+<h3> Modulos </h3>
+<p> para incluir un modulo, por ejemplo el http, hacemos <br>
+var http = require('http'); <br>
+veremos mas adelante como funciona este modulo </p>
+
+<h3>crear modulos </h3>
+<p> crear un archivo modulo_propia.js: <br>
+exports.modulo_propia = function () {
+                        return Date();
+                        };
+
+listo, ahora los metodo y propiedades del modulo estan disponibles fuera del modulo </p>
+
+
+<h3>Importar modulos </h3>
+<p> var importado = require('./modulo_propia.js'); 
+por ejemplo: </p>
+                      
+<!--
+var http = require('http');
+var dt = require('./modulo_propia.js');
+
+http.createServer(function (req, res) {
+  res.writeHead(200, {'Content-Type': 'text/html'});
+  res.write("The date and time are currently: " + dt.myDateTime());
+  res.end();
+}).listen(8080); 
+
+-->
+
+
+
+</body>
+</html>
+

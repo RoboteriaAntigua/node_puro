@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+</title>
+<style>
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#barraSuperior {
+  float: center;
+  width: 100%;
+  height: 25px; /* only for demonstration, should be removed */
+  background: #ccc;
+  padding: 5px;
+}
+
+#cajaOrdenActual {
+  float: left;
+  width: 30%;
+  height: 500px; /* only for demonstration, should be removed */
+  background: #ccc;
+  padding: 20px;
+}
+
+#botoneraLateral {
+    float: left;
+    width:10%;
+    height:250px;
+    background: #ccc;
+    padding:5px;
+    }
+    
+
+#IDtareasRealizadas {
+    text-align:top;        
+    background:white;
+    border:1px;
+    overflow:scroll;
+    }
+    
+#IDtecnico #IDencargado {
+    width=30%;
+    }  
+    
+</style>
+
+</head>
+
+<!--Barra superior -->
+<body>
+<nav id="barraSuperior"> 
+<button id="home">home</button> 
+<button id="home">tickets</button>
+<button id="home">tecnicos</button>
+<button id="home">sucursales</button>
+<button id="home">about</button>
+<button id="home">login</button>                         
+</nav>
+
+<br>
+
+<section>
+    
+    <!--Orden actual -->
+    <article id="cajaOrdenActual">
+    <label for="IDorden" align="left">   <b>Orden:      </b></label>   <input id="IDorden">  <br>   
+    <label for="IDsucursal" align="left"><b>Sucursal:   </b></label>  <input id="IDsucursal"> <br>
+    <label align="left" for="IDdireccion"><b>Direccion: </b></label><input id="IDdireccion"> <br>
+    <label align="left" for="IDtelefono"><b>telefono:   </b></label>  <input id="IDtelefono"> 
+    <br>
+    <p algin:center>Tareas realizadas </p>
+    <textarea rows="20" id="IDtareasRealizadas" cols="40"></textarea>
+    <br>
+    <br>
+    <label align="left" for="IDtecnico"><b>Tecnico: </b></label> <input     id="IDtecnico"> <br> 
+    <label align="left" for="IDencargado"><b>Encargado: </b></label> <input id="IDencargado">
+    </article>
+
+
+
+
+
+
+<!--Botonera de acciones -->
+<nav id="botoneraLateral">
+    <button  onclick="nueva()">Nueva</button> <br>  <!--Actualiza el JSON OrdenesServicio -->
+    <button  onclick="buscar()">buscar</button> <br> <!--Busca enl JSON listaOrdenes -->
+    <button onclick="editar()">editar</button><br> <!--Parece que no es nesesario -->
+    <button  onclick="guardar()">guardar</button><br> <!--Actualiza el JSON OrdenesServicio-->
+</nav>
+ </section>
+ 
+ 
+ 
+<p id="id1">aver</p>
+<script>
+
+//funciones de botonera de acciones
+let contadorOrden=0;
+
+function prueba(){
+    //simplemente limpiamos los campos de la orden de servicio actual
+    let var_sucursal= document.getElementById("IDsucursal").value;
+    document.getElementById("id1").innerHTML="la sucursal es: " + var_sucursal;
+    }
+    
+function nueva(){
+    contadorOrden = contadorOrden+1;
+    document.getElementById("IDorden").value= contadorOrden;
+    
+    document.getElementById("IDsucursal").value=" ";
+    document.getElementById("IDdireccion").value=" ";
+    document.getElementById("IDtelefono").value=" ";
+    document.getElementById("IDtareasRealizadas").value=" ";
+    document.getElementById("IDtecnico").value=" ";
+    document.getElementById("IDencargado").value=" ";
+    }
+
+
+function editar(){
+    
+    }
+  
+ 
+ //Vamos a guardar de manera local en modo ejemplo
+function guardar(){
+    //guardo localmente
+    let nuevaOrden = {
+    Sucursal:IDsucursal.value , 
+    direccion:IDdireccion.value, 
+    telefono:IDtelefono.value,
+    tareasRealizadas:IDtareasRealizadas.value,
+    tecnico:IDtecnico.value,
+    encargado:IDencargado.value
+    };
+    let string1 = JSON.stringify(nuevaOrden);
+    localStorage.setItem("ordenPrueba",string1);
+       
+    }
+
+
+//funcion buscar, modo prueba
+function buscar(){
+    let text = localStorage.getItem("ordenPrueba");
+    let objeto2 = JSON.parse(text);
+document.getElementById("IDsucursal").value = objeto2.Sucursal;
+document.getElementById("IDdireccion").value = objeto2.direccion;
+document.getElementById("IDtelefono").value = objeto2.telefono;
+document.getElementById("IDtareasRealizadas").value = objeto2.tareasRealizadas;
+document.getElementById("IDtecnico").value = objeto2.tecnico;
+document.getElementById("IDencargado").value = objeto2.encargado;
+    }
+</script>
+
+</body>
+</html>
+

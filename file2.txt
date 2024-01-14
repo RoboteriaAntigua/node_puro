@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+</title>
+</head>
+<body>
+<h3>Aqui un ejemplo de HTML para ser cargado con fs </h3>
+<p>que tul </p>
+<p id="id1"></p>
+<script>
+
+
+
+
+</script>
+
+</body>
+</html>
+

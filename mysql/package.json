@@ -1,0 +1,11 @@
+{
+  "name": "tete",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1_conexion.js",
+  "scripts": {
+    "test": "show databases;"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,14 @@
+//Devuelve un arreglo donde esta instalado node, y a donde se ejecuta
+//console.log(process.argv);
+
+//El arreglo tambien devuelve los argumentos que le pasaste
+
+function funcion1(p){
+	var index = process.argv.indexOf(p);
+	return process.argv[index+1];
+}
+
+
+
+//ejecutamos: node 2_procesos.js --nombre "jesus"
+console.log( funcion1('--nombre') );	//Imprime jesus

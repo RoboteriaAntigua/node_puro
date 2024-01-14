@@ -1,0 +1,24 @@
+//Modulo URL
+
+var url = require('url');
+var direccion = 'http://localhost:8080/default.htm?year=2017&month=february';
+var parseada = url.parse(direccion, true);
+
+console.log(parseada.host);	//retorna 'localhost:8080' 
+console.log(parseada.pathname);	//retorna './default.htm'
+console.log(parseada.search);	//retorna '?year=2017&month=february'
+
+var data_obj = parseada.query;	
+//retorna un objeto: {year=2017, month='february'}
+console.log(data_obj.month);	//retorna 'february'
+
+
+
+//ahora creamos un server y le damos uso a url
+var http = require('http');
+http.createServer(function(peticion, respuesta){
+   var path_nombre = url.parse(peticion.url).pathname;
+   respuesta.writeHead(200);
+   respuesta.end('la url es'+ url.host);
+}).listen(3000, '127.0.0.1');
+console.log('El servidor esta funcionando correctamente en https://localhost:3000/');
